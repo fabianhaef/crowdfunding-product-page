@@ -1,3 +1,5 @@
+import product from './product.js'
+
 let hamburgerIcon     =     document.getElementById("hamburger-icon");
 let closeMenuIcon     =     document.getElementById("close-menu-icon")
 let menuIconDiv       =     document.getElementById("menu-icons")
@@ -6,7 +8,9 @@ let overlay           =     document.getElementById("overlay")
 let backProjectButton =     document.getElementById("back-project-button")
 let backProjectModal  =     document.querySelector(".back-project-modal")
 let closeModalIcon    =     document.querySelector(".close-modal")
+let radioButtons      =     document.querySelectorAll(".pledge__radio");
 
+console.log(radioButtons)
 
 menuIconDiv.addEventListener('click', () => {
   if(!hamburgerIcon.classList.contains('hidden')) {

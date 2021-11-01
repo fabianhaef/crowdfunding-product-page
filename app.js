@@ -1,5 +1,6 @@
 import product from './product.js'
 
+let bookmarkIcon     =     document.querySelector('.bookmark')
 let hamburgerIcon     =     document.getElementById("hamburger-icon");
 let closeMenuIcon     =     document.getElementById("close-menu-icon")
 let menuIconDiv       =     document.getElementById("menu-icons")
@@ -9,8 +10,6 @@ let backProjectButton =     document.getElementById("back-project-button")
 let backProjectModal  =     document.querySelector(".back-project-modal")
 let closeModalIcon    =     document.querySelector(".close-modal")
 let radioButtons      =     document.querySelectorAll(".pledge__radio");
-
-console.log(radioButtons)
 
 menuIconDiv.addEventListener('click', () => {
   if(!hamburgerIcon.classList.contains('hidden')) {
@@ -41,5 +40,17 @@ closeModalIcon.addEventListener("click", () => {
     backProjectModal.classList.add("hidden")
     overlay.classList.add('hidden')
     overlay.classList.remove("overlay")
+  }
+})
+
+
+/* Event listener to check if product is already bookmarked */
+
+bookmarkIcon.addEventListener('click', () => {
+  if(product["bookmarked"]) {
+    return;
+  } else {
+    product["bookmarked"] = true;
+    bookmarkIcon.src = "./images/icon-check.svg";
   }
 })

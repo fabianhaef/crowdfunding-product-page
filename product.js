@@ -4,6 +4,7 @@ const product = {
   "funded": 89914,
   "noOfBacker": 5007,
   "daysLeft": 56,
+  "bookmarked": false,
   "pledges": [
     {
       "name": "Bamboo Stand",

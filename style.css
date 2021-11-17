@@ -6,7 +6,7 @@
   --black: #222222;
   --dark-gray: hsl(0, 0%, 48%);
   --medium-gray: #dbdbdb;
-  --light-gray: hsl(0, 0%, 93%);
+  --light-gray: #ededed;
   --background: #FAFAFA;
 }
 
@@ -32,7 +32,7 @@ a {
 
 /* HEADER */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 nav {
@@ -391,6 +391,10 @@ header img {
   opacity: 0.5;
 }
 
+.modal-green-border{
+  border: 1px solid var(--dark);
+} 
+
 
 /*  
 
@@ -398,3 +402,42 @@ header img {
   fix radio buttons styling
 
 */
+
+
+.enter-pledge {
+  border-top: 0.5px solid var(--light-gray);
+  margin: 24px -24px 0 -24px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enter-pledge p {
+  margin-top: 32px;
+}
+
+.submit-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.number-input-field {
+  width: 100px;
+  border-radius: 50px;
+  border: 1px solid var(--medium-gray);
+  padding: 16px 24px;
+}
+
+.button-primary-submit {
+  background-color: var(--moderate);
+  border: 1px solid var(--moderate);
+  border-radius: 50px;
+  color: white;
+  font-weight: 500;
+
+  padding: 16px 24px;
+  cursor: pointer;
+}

@@ -93,7 +93,34 @@ bookmarkIcon.addEventListener('click', () => {
 
 radioButtons.forEach((radioButton) => {
   radioButton.addEventListener(('click'), () => {
-    let currentModal = radioButton.parentElement.parentElement;
-    currentModal.style.border = "1px solid var(--dark)"
+    addBorderToSelectedRadioBtn();
+    showBackProjectSection(radioButton.parentElement.parentElement);
   })
 })
+
+
+
+
+const addBorderToSelectedRadioBtn = () => {
+  radioButtons.forEach((btn) => {
+    let modalParent = btn.parentElement.parentElement;
+    if(btn.checked) {
+      modalParent.classList.add("modal-green-border");
+    } else {
+      modalParent.classList.remove("modal-green-border");
+    }
+  })
+}
+
+
+const showBackProjectSection = (parentElement) => {
+  let childElements = parentElement.children;
+  for(let i = 0; i < childElements.length; i++) {
+    if (childElements[i].classList.contains('enter-pledge')) {
+      let element = childElements[i]
+      console.log(element)
+      element.classList.remove('hidden');
+    }
+  } 
+}
+

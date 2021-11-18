@@ -1,4 +1,32 @@
-import product from './product.js'
+const product = {
+  "name": "Mastercraft Bamboo Monitor Riser",
+  "goal": 100000,
+  "funded": 89914,
+  "noOfBacker": 5007,
+  "daysLeft": 56,
+  "bookmarked": false,
+  "pledges": [
+    {
+      "name": "Bamboo Stand",
+      "minPledge": 25,
+      "left": 101
+    },
+    {
+      "name": "Black Edition Stand",
+      "minPledge": 25,
+      "left": 64
+    },
+    {
+      "name": "Mahagony Special Edition",
+      "minPledge": 200,
+      "left": 0
+    }
+  ]
+}
+
+
+let body                =     document.querySelector('body');
+
 
 let bookmarkIcon        =     document.querySelector('.bookmark')
 let hamburgerIcon       =     document.getElementById("hamburger-icon");
@@ -14,6 +42,7 @@ let closeModalIcon      =     document.querySelector(".close-modal")
 let radioButtons        =     document.querySelectorAll(".pledge__radio");
 
 
+
 /* 
       PRODUCT SELECTORS
 */
@@ -26,7 +55,20 @@ let pledgeTitles        =     document.querySelectorAll('.about__pledge-name');
 let pledgeNumberLeft    =     document.querySelectorAll('.about__pledge-left')
 
 let modalTitles         =     document.querySelectorAll(".modal-title");
-let modalNumbersLeft     =     document.querySelectorAll('.modal-number');
+let modalNumbersLeft    =     document.querySelectorAll('.modal-number');
+
+/* 
+      FORM SELECTORS
+*/
+
+let noRewardForm        =     document.querySelector('.no-reward-form')
+let bamboForm           =     document.querySelector(".bamboo-form")
+let blackForm           =     document.querySelector(".black-edition-form")
+
+let successModal        =     document.querySelector(".backing-success-modal")
+
+
+
 
 for(let i = 0; i < pledgeTitles.length; i++){
   pledgeTitles[i].innerHTML = product["pledges"][i]["name"];
@@ -51,12 +93,14 @@ menuIconDiv.addEventListener('click', () => {
     navMenu.classList.add("nav");
     overlay.classList.remove('hidden')
     overlay.classList.add("overlay")
+    body.classList.add("noscroll")
   } else {
     closeMenuIcon.classList.add('hidden');
     hamburgerIcon.classList.remove("hidden");
     navMenu.classList.remove("nav");
     overlay.classList.add('hidden')
     overlay.classList.remove("overlay")
+    body.classList.remove("noscroll")
   }
 })
 
@@ -118,9 +162,54 @@ const showBackProjectSection = (parentElement) => {
   for(let i = 0; i < childElements.length; i++) {
     if (childElements[i].classList.contains('enter-pledge')) {
       let element = childElements[i]
-      console.log(element)
       element.classList.remove('hidden');
     }
   } 
 }
+
+
+noRewardForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const pledgeValue = document.getElementById("number-input-field").value;
+  const newTotalFunded = Number(product["funded"]) + Number(pledgeValue);
+  fundingTotalFunded.innerHTML = "$" + newTotalFunded
+
+  window.scrollTo(0, 0);
+  
+  backProjectModal.classList.add("hidden")
+  successModal.classList.remove("hidden")
+})
+
+bamboForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const pledgeValue = document.getElementById("number-input-field").value;
+  const newTotalFunded = Number(product["funded"]) + Number(pledgeValue);
+  fundingTotalFunded.innerHTML = "$" + newTotalFunded
+  pledgeNumberLeft[0].innerHTML = Number(product["pledges"][0]["left"]) -1 ;
+  modalNumbersLeft[0].innerHTML = Number(product["pledges"][0]["left"]) -1 ;
+  fundingTotalBackers.innerHTML = Number(product["noOfBacker"]) + 1;
+
+  window.scrollTo(0, 0);
+
+  backProjectModal.classList.add("hidden")
+  successModal.classList.remove("hidden")
+})
+
+
+
+blackForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const pledgeValue = document.getElementById("number-input-field").value;
+  const newTotalFunded = Number(product["funded"]) + Number(pledgeValue);
+  fundingTotalFunded.innerHTML = "$" + newTotalFunded
+
+  pledgeNumberLeft[1].innerHTML = Number(product["pledges"][1]["left"]) - 1;
+  modalNumbersLeft[1].innerHTML = pledgeNumberLeft[1].innerHTML;
+  fundingTotalBackers.innerHTML = Number(product["noOfBacker"]) + 1;
+
+  window.scrollTo(0, 0);
+
+  backProjectModal.classList.add("hidden")
+  successModal.classList.remove("hidden")
+})
 

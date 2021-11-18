@@ -35,6 +35,10 @@ a {
   display: none !important;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 nav {
   display: none;
 }
@@ -54,10 +58,11 @@ header {
   top: 0px;
   left: 0px;
   right: 0px;
-  height: 100%; 
+  height: calc(100vh + 120px);
   width: 100%;
   transition: 300ms ease-in-out;
   z-index: 1;
+  overflow-y: scroll;
 }
 
 .nav {
@@ -305,6 +310,7 @@ header img {
   margin: 120px 24px 0 24px;
   padding: 38px 24px;
 
+  overflow-y: scroll;
   box-shadow: 1px 2px 3px hsla(0, 0%, 13%, 0.3); /* TODO: " */
 }
 
@@ -440,4 +446,45 @@ header img {
 
   padding: 16px 24px;
   cursor: pointer;
+}
+
+/* backing success modal */
+.backing-success-modal {
+  position: absolute;
+  z-index: 20;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: white;
+
+  border-radius: 10px;
+  margin: 120px 24px 0 24px;
+  padding: 38px 24px;
+
+  overflow-y: scroll;
+  box-shadow: 1px 2px 3px hsla(0, 0%, 13%, 0.3); /* TODO: " */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-icon {
+  margin-bottom: 24px;
+}
+
+.backing-success-modal h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.backing-success-modal p {
+  font-size: 14px;
+  color: var(--dark-gray);
+  margin-top: 28px;
+  margin-bottom: 28px;
+  text-align: center;
+  line-height: 20px;
 }

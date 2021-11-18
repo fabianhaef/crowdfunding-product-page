@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   
-  <script src="./projectSelect.js" type="module"></script>
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./style.css">
   <title>Frontend Mentor | Crowdfunding product page</title>
@@ -29,6 +28,7 @@
       <a href="#">Get Started</a>
     </nav>
   </header>
+
   <div class="main">
     <img src="./images/logo-mastercraft.svg" alt="logo-mastercraft" id="logo-mastercraft">
     <h1 class="funding-name"></h1>
@@ -38,6 +38,7 @@
       <img src="./images/icon-bookmark.svg" alt="bookmark" class="bookmark">
     </div>
   </div>
+
   <div class="funding">
     <div class="funding__stat">
       <i class="funding_stat-total-funded">
@@ -79,7 +80,7 @@
 
     <div class="about__pledge">
       <h3 class="about__pledge-name"></h3>
-      <h3 class="about__highlighted">Pledge $25 or more</h3>
+      <h3 class="about__highlighted">Pledge $75 or more</h3>
       <p>You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
         member list. Shipping is included.
       </p>
@@ -103,7 +104,6 @@
   </div>
 
   <div class="back-project-modal hidden">
-    <form action="">
       <div class="back-project-modal_title-bar">
         <h2>Back this project</h2>
         <img src="./images/icon-close-modal.svg" alt="close-modal" height="16" width="16" class="close-modal">
@@ -111,67 +111,80 @@
       <p>
         Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
       </p>
-
-      <div class="back-project-modal__pledge">
-        <div class="back-project-modal__pledge__title-bar">
-          <input type="radio" class="pledge__radio" name="selectedProject">
-          <div class="back-project-modal__pledge__desc">
-            <h3>Pledge with no reward</h3>
+      
+      <form class="no-reward-form">
+          <div class="back-project-modal__pledge">
+            <div class="back-project-modal__pledge__title-bar">
+              <input type="radio" class="pledge__radio" name="selectedProject">
+              <div class="back-project-modal__pledge__desc">
+                <h3>Pledge with no reward</h3>
+              </div>
+            </div>
+            <p>
+              Choose to support us without a reward if you simply believe in our project. As a backer, 
+              you will be signed up to receive product updates via email.
+            </p>
+            <div class="hidden enter-pledge">
+              <p>Enter your pledge</p>
+              <div class="submit-div">
+                <input type="number" placeholder="$" class="number-input-field" id="number-input-field" min="1" step="any">
+                <button type="submit"class="button-primary-submit">Continue</button>
+              </div>
+            </div>
+          </div>
+      </form>
+      
+      <form class="bamboo-form">
+        <div class="back-project-modal__pledge">
+          <div class="back-project-modal__pledge__title-bar">
+            <input type="radio" class="pledge__radio" name="selectedProject">
+            <div class="back-project-modal__pledge__desc">
+              <h3 class="modal-title"></h3>
+              <h3 class="about__highlighted">Pledge $25 or more</h3>
+            </div>
+          </div>
+          <p>
+            Choose to support us without a reward if you simply believe in our project. As a backer, 
+            you will be signed up to receive product updates via email.
+          </p>
+          <div class="about__pledge__numbers">
+            <span><i class="modal-number"></i></span> left
+          </div>  
+          <div class="hidden enter-pledge">
+            <p>Enter your pledge</p>
+            <div class="submit-div">
+              <input type="number" placeholder="$" class="number-input-field" id="number-input-field" min="25" step="any">
+              <button type="submit"class="button-primary-submit">Continue</button>
+            </div>
           </div>
         </div>
-        <p>
-          Choose to support us without a reward if you simply believe in our project. As a backer, 
-          you will be signed up to receive product updates via email.
-        </p>
-      </div>
-  
-      <div class="back-project-modal__pledge">
-        <div class="back-project-modal__pledge__title-bar">
-          <input type="radio" class="pledge__radio" name="selectedProject">
-          <div class="back-project-modal__pledge__desc">
-            <h3 class="modal-title"></h3>
-            <h3 class="about__highlighted">Pledge $25 or more</h3>
+      </form>
+    
+      <form class="black-edition-form">
+        <div class="back-project-modal__pledge">
+          <div class="back-project-modal__pledge__title-bar">
+            <input type="radio" class="pledge__radio" name="selectedProject">
+            <div class="back-project-modal__pledge__desc">
+              <h3 class="modal-title"></h3>
+              <h3 class="about__highlighted">Pledge $75 or more</h3>
+            </div>
+          </div>
+          <p>
+            You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
+      member list. Shipping is included.
+          </p>
+          <div class="about__pledge__numbers">
+            <span><i class="modal-number"></i></span> left
+          </div>  
+          <div class="hidden enter-pledge">
+            <p>Enter your pledge</p>
+            <div class="submit-div">
+              <input type="number" placeholder="$" class="number-input-field" id="number-input-field" min="75" step="any">
+              <button type="submit"class="button-primary-submit">Continue</button>
+            </div>
           </div>
         </div>
-        <p>
-          Choose to support us without a reward if you simply believe in our project. As a backer, 
-          you will be signed up to receive product updates via email.
-        </p>
-        <div class="about__pledge__numbers">
-          <span><i class="modal-number"></i></span> left
-        </div>  
-        <div class="hidden enter-pledge">
-          <p>Enter your pledge</p>
-          <div class="submit-div">
-            <input type="number" placeholder="$" class="number-input-field" id="number-input-field" min="1" step="any">
-            <button type="submit"class="button-primary-submit">Continue</button>
-          </div>
-        </div>
-      </div>
-  
-      <div class="back-project-modal__pledge">
-        <div class="back-project-modal__pledge__title-bar">
-          <input type="radio" class="pledge__radio" name="selectedProject">
-          <div class="back-project-modal__pledge__desc">
-            <h3 class="modal-title"></h3>
-            <h3 class="about__highlighted">Pledge $75 or more</h3>
-          </div>
-        </div>
-        <p>
-          You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
-    member list. Shipping is included.
-        </p>
-        <div class="about__pledge__numbers">
-          <span><i class="modal-number"></i></span> left
-        </div>  
-        <div class="hidden enter-pledge">
-          <p>Enter your pledge</p>
-          <div class="submit-div">
-            <input type="number" placeholder="$" class="number-input-field" id="number-input-field" min="1" step="any">
-            <button type="submit"class="button-primary-submit">Continue</button>
-          </div>
-        </div>
-      </div>
+      </form>
   
       
       <div class="back-project-modal__pledge inactive">
@@ -191,27 +204,26 @@
         </div>  
         
       </div>
-    </form>
   </div>
 
 
 
-  <!-- Selected pledge  start -->
-  Enter your pledge
-  $200
-  Continue
-  <!-- Selected pledge end -->
 
-  <!-- Selection modal end -->
+  <div class="backing-success-modal hidden">
+    <img src="./images/icon-check.svg" alt="bookmark" class="success-icon" width="64" height="64">
+    <h2>Thanks for your support!</h2>
+    <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+      an email once our campaign is completed.</p>
+      <button class="button-primary" onclick="closeSuccessModal()">Got it!</button>
+  </div>
 
-  <!-- Success modal start -->
+  <script>
+    let successModal = document.querySelector(".backing-success-modal")
+    const closeSuccessModal = () => {
+        successModal.classList.add("hidden")
+    }
+    </script>
 
-  Thanks for your support!
-  Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
-  an email once our campaign is completed.
-  Got it!
-
-  <!-- Success modal end -->
   <script src="./app.js" type="module"></script>
 </body>
 </html>

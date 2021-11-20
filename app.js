@@ -221,12 +221,6 @@ blackForm.addEventListener('submit', (e) => {
 bookmarkDiv.addEventListener('click', () => {
   if(product["bookmarked"]) {
     product["bookmarked"] = false;
-     /*
-     bookmarkImg.src = "./images/icon-bookmark.svg";
-     bookmarkImg.width = 56;
-     bookmarkImg.height = 56;
-     bookmarkDiv.style.color = "var(--light-gray)";
-      */
     bookmarkDiv.innerHTML = "Bookmark"
     bookmarkDiv.style.backgroundImage  = 'url("./images/icon-bookmark.svg")'
     bookmarkDiv.style.backgroundSize = "56px 56px";
@@ -234,12 +228,6 @@ bookmarkDiv.addEventListener('click', () => {
     bookmarkDiv.style.color = "var(--dark-gray)";
   } else {
     product["bookmarked"] = true;
-    /*
-    bookmarkImg.src = "./images/icon-check.svg";
-    bookmarkImg.width = 56;
-    bookmarkImg.height = 56;
-    bookmarkDiv.style.color = "var(--moderate)";
-    */
     bookmarkDiv.innerHTML = "Bookmarked"
     bookmarkDiv.style.backgroundImage  = 'url("./images/icon-check.svg")'
     bookmarkDiv.style.backgroundSize = "56px 56px";

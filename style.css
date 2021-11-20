@@ -58,40 +58,11 @@ header {
   top: 0px;
   left: 0px;
   right: 0px;
-  height: calc(100vh + 120px);
+  height: calc(3 * 100vh);
   width: 100%;
   transition: 300ms ease-in-out;
   z-index: 1;
   overflow-y: scroll;
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  position: fixed;
-  z-index: 1;
-
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  background-color: white;
-  border-radius: 10px;
-
-  margin: 88px 24px 0 24px;
-}
-
-.nav a {
-  font-weight: 500;
-  font-size: 16px;
-  border-bottom: 1px solid var(--light-gray);
-  width: 100%;
-  padding: 28px 24px;
-}
-.nav a:last-child {
-  border-bottom: 1px transparent;
 }
 
 .menu-icons {
@@ -157,6 +128,14 @@ header img {
   cursor: pointer;
 }
 
+.button-primary:hover {
+  background-color: var(--dark);
+}
+
+.button-primary:active {
+  background-color: var(--dark);
+}
+
 .button-primary.disabled {
   background-color: var(--dark-gray);
   border: 1px solid var(--dark-gray);
@@ -199,7 +178,7 @@ header img {
   position: absolute;
   width: 80px;
   height: 1px;
-  margin-top: 96px;
+  margin-top: 110px;
   z-index: 0;
 }
 
@@ -487,4 +466,170 @@ header img {
   margin-bottom: 28px;
   text-align: center;
   line-height: 20px;
+}
+
+
+@media screen and (min-width: 768px) {
+  body {
+    background-image: url('./images/image-hero-desktop.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    background-color: var(--background);
+  }
+
+  header {
+    padding: 32px 168px;
+  }
+
+  .menu-icons {
+    display: none;
+  }
+
+  nav {
+    display: initial;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  
+    position: fixed;
+    z-index: 1;
+  
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: white;
+    border-radius: 10px;
+  
+    margin: 88px 24px 0 24px;
+  }
+
+  #nav a {
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    padding: 28px 24px;
+    color: white;
+  }
+
+  .main {
+    width: 730px;
+    height: 240px;
+    margin: 156px auto 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main p {
+    margin: 24px 0;
+    padding: 0;
+  }
+
+
+  .bookmark-mobile {
+    display: none;
+  }
+
+  .bookmark-div {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--dark-gray);
+    font-weight: 700;
+    background-color: var(--light-gray);
+    border-radius: 50px;
+    width: 178px;
+    padding: 0 8px 0 0;
+    height: 56px;
+
+    background-image: url('./images/icon-bookmark.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 56 56;
+    background-color: var(--background);
+  }
+
+  .funding {
+    margin: 24px auto 0 auto;
+    width: 730px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .funding__stat {
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-right: 1px solid var(--light-gray);
+  }
+
+  .funding__stat:not(:first-child) {
+    padding-left: 44px;
+  }
+  
+  .funding__stat:last-child {
+    border: 1px solid transparent !important;
+  }
+
+  .funding__stat::after {
+    content: none;
+  }
+
+  .about {
+    margin: 24px auto 0 auto;
+    width: 730px;
+  }
+
+  .about__pledge-title-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  } 
+
+  .about .about__pledge-title-div .about__highlighted {
+    color: var(--moderate)
+  }
+  .about h2 {
+    margin-bottom: 44px;
+  }
+  .about p {
+    margin-top: 0;
+    margin-bottom: 44px;
+  }
+
+  .about .about__pledge {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .about .about__pledge-title-div .about__pledge-name {
+    margin-bottom: 32px;
+  }
+
+  .about .about__pledge p {
+    margin-bottom: 24px;
+  }
+
+  .about__pledge__numbers-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+   
+  .about .about__pledge__numbers-div .about__pledge__numbers {
+    margin: 0;
+  }
+
+  .back-project-modal {
+    margin: 180px auto 0;
+    width: 730px;
+  }
 }

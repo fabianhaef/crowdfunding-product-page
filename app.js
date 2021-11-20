@@ -26,9 +26,6 @@ const product = {
 
 
 let body                =     document.querySelector('body');
-
-
-let bookmarkIcon        =     document.querySelector('.bookmark')
 let hamburgerIcon       =     document.getElementById("hamburger-icon");
 let closeMenuIcon       =     document.getElementById("close-menu-icon")
 let menuIconDiv         =     document.getElementById("menu-icons")
@@ -37,11 +34,9 @@ let overlay             =     document.getElementById("overlay")
 let backProjectButton   =     document.getElementById("back-project-button")
 let backProjectModal    =     document.querySelector(".back-project-modal")
 let closeModalIcon      =     document.querySelector(".close-modal")
-
-
 let radioButtons        =     document.querySelectorAll(".pledge__radio");
-
-
+let selectRewardButtons =     document.querySelectorAll(".select-reward");
+let bookmarkDiv         =     document.querySelector(".bookmark-div");
 
 /* 
       PRODUCT SELECTORS
@@ -50,25 +45,36 @@ let fundingName         =     document.querySelector('.funding-name');
 let fundingTotalFunded  =     document.querySelector('.funding_stat-total-funded');
 let fundingTotalBackers =     document.querySelector('.funding__stat-total-backers');
 let fundingDaysLeft     =     document.querySelector(".funding_stat-days-left");
-
 let pledgeTitles        =     document.querySelectorAll('.about__pledge-name');
 let pledgeNumberLeft    =     document.querySelectorAll('.about__pledge-left')
-
 let modalTitles         =     document.querySelectorAll(".modal-title");
 let modalNumbersLeft    =     document.querySelectorAll('.modal-number');
 
 /* 
       FORM SELECTORS
 */
-
 let noRewardForm        =     document.querySelector('.no-reward-form')
 let bamboForm           =     document.querySelector(".bamboo-form")
 let blackForm           =     document.querySelector(".black-edition-form")
-
 let successModal        =     document.querySelector(".backing-success-modal")
 
+const mq = window.matchMedia( ("max-width: 768px") );
 
+if(mq.matches) {
+  let bookmarkIcon        =     document.querySelector('.bookmark')
 
+  /* Event listener to check if product is already bookmarked */
+
+  bookmarkIcon.addEventListener('click', () => {
+    if(product["bookmarked"]) {
+      product["bookmarked"] = false;
+      bookmarkIcon.src = "./images/icon-bookmark.svg";
+    } else {
+      product["bookmarked"] = true;
+      bookmarkIcon.src = "./images/icon-check.svg";
+    }
+  })
+}
 
 for(let i = 0; i < pledgeTitles.length; i++){
   pledgeTitles[i].innerHTML = product["pledges"][i]["name"];
@@ -76,8 +82,6 @@ for(let i = 0; i < pledgeTitles.length; i++){
   modalTitles[i].innerHTML = product["pledges"][i]["name"];
   modalNumbersLeft[i].innerHTML = product["pledges"][i]["left"];
 }
-
-
 
 /* INIT FUNDING ELEMENTS */
 fundingName.innerHTML           = product["name"];
@@ -112,6 +116,18 @@ backProjectButton.addEventListener('click', () => {
   }
 })
 
+selectRewardButtons.forEach((selectRewardButton) => {
+  selectRewardButton.addEventListener('click', () => {
+    if(backProjectModal.classList.contains("hidden")) {
+      backProjectModal.classList.remove("hidden");
+      overlay.classList.remove('hidden')
+      overlay.classList.add("overlay")
+    }
+
+    window.scrollTo(0, 0);
+  })
+})
+
 closeModalIcon.addEventListener("click", () => {
   if(!backProjectModal.classList.contains("hidden")) {
     backProjectModal.classList.add("hidden")
@@ -120,18 +136,6 @@ closeModalIcon.addEventListener("click", () => {
   }
 })
 
-
-/* Event listener to check if product is already bookmarked */
-
-bookmarkIcon.addEventListener('click', () => {
-  if(product["bookmarked"]) {
-    product["bookmarked"] = false;
-    bookmarkIcon.src = "./images/icon-bookmark.svg";
-  } else {
-    product["bookmarked"] = true;
-    bookmarkIcon.src = "./images/icon-check.svg";
-  }
-})
 
 
 
@@ -213,3 +217,32 @@ blackForm.addEventListener('submit', (e) => {
   successModal.classList.remove("hidden")
 })
 
+
+bookmarkDiv.addEventListener('click', () => {
+  if(product["bookmarked"]) {
+    product["bookmarked"] = false;
+     /*
+     bookmarkImg.src = "./images/icon-bookmark.svg";
+     bookmarkImg.width = 56;
+     bookmarkImg.height = 56;
+     bookmarkDiv.style.color = "var(--light-gray)";
+      */
+    bookmarkDiv.innerHTML = "Bookmark"
+    bookmarkDiv.style.backgroundImage  = 'url("./images/icon-bookmark.svg")'
+    bookmarkDiv.style.backgroundSize = "56px 56px";
+    bookmarkDiv.style.backgroundColor = "var(--light-gray)";
+    bookmarkDiv.style.color = "var(--dark-gray)";
+  } else {
+    product["bookmarked"] = true;
+    /*
+    bookmarkImg.src = "./images/icon-check.svg";
+    bookmarkImg.width = 56;
+    bookmarkImg.height = 56;
+    bookmarkDiv.style.color = "var(--moderate)";
+    */
+    bookmarkDiv.innerHTML = "Bookmarked"
+    bookmarkDiv.style.backgroundImage  = 'url("./images/icon-check.svg")'
+    bookmarkDiv.style.backgroundSize = "56px 56px";
+    bookmarkDiv.style.color = "var(--moderate)";
+  }
+})

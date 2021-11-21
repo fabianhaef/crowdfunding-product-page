@@ -598,12 +598,14 @@ header img {
   .about__pledge-title-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
   } 
 
   .about .about__pledge-title-div .about__highlighted {
-    color: var(--moderate)
+    color: var(--moderate);
+    margin-left: 2rem;
   }
+
   .about h2 {
     margin-bottom: 44px;
   }

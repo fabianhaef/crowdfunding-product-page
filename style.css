@@ -130,6 +130,7 @@ header img {
 
 .button-primary:hover {
   background-color: var(--dark);
+  border: 1px solid var(--dark);
 }
 
 .button-primary:active {
@@ -520,7 +521,7 @@ header img {
     width: 730px;
     height: 240px;
     margin: 156px auto 0 auto;
-    padding: 24px;
+    padding: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -558,6 +559,7 @@ header img {
 
   .funding {
     margin: 24px auto 0 auto;
+    padding: 48px;
     width: 730px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -567,16 +569,21 @@ header img {
     flex: 1;
     justify-content: flex-start;
     align-items: flex-start;
-    border-right: 1px solid var(--light-gray);
   }
 
   .funding__stat:not(:first-child) {
     padding-left: 44px;
   }
-  
-  .funding__stat:last-child {
-    border: 1px solid transparent !important;
+
+  .funding__stat:nth-child(1) {
+    border-right: 1px solid var(--light-gray);
   }
+
+  .funding__stat:nth-child(2) {
+    border-right: 1px solid var(--light-gray);
+  }
+  
+  
 
   .funding__stat::after {
     content: none;
@@ -584,6 +591,7 @@ header img {
 
   .about {
     margin: 24px auto 0 auto;
+    padding: 48px;
     width: 730px;
   }
 
@@ -629,6 +637,56 @@ header img {
   }
 
   .back-project-modal {
+    margin: 180px auto 0;
+    width: 730px;
+  }
+
+  .back-project-modal__pledge__desc {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .back-project-modal__pledge__desc .modal-title {
+    padding-right: 24px;
+  }
+  
+  .back-project-modal__pledge .about__pledge__numbers {
+    display: none;
+  }
+
+  .modal-number-desktop {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  .back-project-modal__pledge__title-bar {
+    width: 100%;
+  }
+  .back-project-modal__pledge__title-bar span {
+    padding-left: 4rem;
+  }
+
+  .enter-pledge {
+    flex-direction: row;
+  }
+
+  .enter-pledge p {
+    flex: 1;
+  }
+
+  
+
+  .submit-div {
+    justify-content: flex-end;
+    flex: 1;
+  }
+  .submit-div input {
+    margin-right: 2rem;
+  }
+
+  .backing-success-modal {
     margin: 180px auto 0;
     width: 730px;
   }

@@ -25,45 +25,47 @@ const product = {
 }
 
 
-let body                =     document.querySelector('body');
-let hamburgerIcon       =     document.getElementById("hamburger-icon");
-let closeMenuIcon       =     document.getElementById("close-menu-icon")
-let menuIconDiv         =     document.getElementById("menu-icons")
-let navMenu             =     document.getElementById("nav")
-let overlay             =     document.getElementById("overlay")
-let backProjectButton   =     document.getElementById("back-project-button")
-let backProjectModal    =     document.querySelector(".back-project-modal")
-let closeModalIcon      =     document.querySelector(".close-modal")
-let radioButtons        =     document.querySelectorAll(".pledge__radio");
-let selectRewardButtons =     document.querySelectorAll(".select-reward");
-let bookmarkDiv         =     document.querySelector(".bookmark-div");
+let body                      =     document.querySelector('body');
+let hamburgerIcon             =     document.getElementById("hamburger-icon");
+let closeMenuIcon             =     document.getElementById("close-menu-icon")
+let menuIconDiv               =     document.getElementById("menu-icons")
+let navMenu                   =     document.getElementById("nav")
+let overlay                   =     document.getElementById("overlay")
+let backProjectButton         =     document.getElementById("back-project-button")
+let backProjectModal          =     document.querySelector(".back-project-modal")
+let closeModalIcon            =     document.querySelector(".close-modal")
+let radioButtons              =     document.querySelectorAll(".pledge__radio");
+let selectRewardButtons       =     document.querySelectorAll(".select-reward");
+let bookmarkDiv               =     document.querySelector(".bookmark-div");
 
 /* 
       PRODUCT SELECTORS
 */
-let fundingName         =     document.querySelector('.funding-name');   
-let fundingTotalFunded  =     document.querySelector('.funding_stat-total-funded');
-let fundingTotalBackers =     document.querySelector('.funding__stat-total-backers');
-let fundingDaysLeft     =     document.querySelector(".funding_stat-days-left");
-let pledgeTitles        =     document.querySelectorAll('.about__pledge-name');
-let pledgeNumberLeft    =     document.querySelectorAll('.about__pledge-left')
-let modalTitles         =     document.querySelectorAll(".modal-title");
-let modalNumbersLeft    =     document.querySelectorAll('.modal-number');
-
-/* 
-      FORM SELECTORS
-*/
-let noRewardForm        =     document.querySelector('.no-reward-form')
-let bamboForm           =     document.querySelector(".bamboo-form")
-let blackForm           =     document.querySelector(".black-edition-form")
-let successModal        =     document.querySelector(".backing-success-modal")
+let fundingName               =     document.querySelector('.funding-name');   
+let fundingTotalFunded        =     document.querySelector('.funding_stat-total-funded');
+let fundingTotalBackers       =     document.querySelector('.funding__stat-total-backers');
+let fundingDaysLeft           =     document.querySelector(".funding_stat-days-left");
+let pledgeTitles              =     document.querySelectorAll('.about__pledge-name');
+let pledgeNumberLeft          =     document.querySelectorAll('.about__pledge-left')
+let modalTitles               =     document.querySelectorAll(".modal-title");
+let modalNumbersLeft          =     document.querySelectorAll('.modal-number');
+let modalNumbersLeftDesktop   =     document.querySelectorAll('.modal-number-desktop');
+console.log(modalNumbersLeftDesktop)
+// FORM SELECTORS
+let noRewardForm              =     document.querySelector('.no-reward-form')
+let bamboForm                 =     document.querySelector(".bamboo-form")
+let blackForm                 =     document.querySelector(".black-edition-form")
+let successModal              =     document.querySelector(".backing-success-modal")
+let successConfirmButton      =     document.querySelector(".backing-success-modal .button-primary")
 
 const mq = window.matchMedia( ("max-width: 768px") );
 
 if(mq.matches) {
   let bookmarkIcon        =     document.querySelector('.bookmark')
 
-  /* Event listener to check if product is already bookmarked */
+  modalNumbersLeftDesktop.forEach((elem) =>  {
+    elem.classList.remove('hidden')
+  })
 
   bookmarkIcon.addEventListener('click', () => {
     if(product["bookmarked"]) {
@@ -81,6 +83,8 @@ for(let i = 0; i < pledgeTitles.length; i++){
   pledgeNumberLeft[i].innerHTML = product["pledges"][i]["left"];
   modalTitles[i].innerHTML = product["pledges"][i]["name"];
   modalNumbersLeft[i].innerHTML = product["pledges"][i]["left"];
+
+  modalNumbersLeftDesktop[i].innerHTML = product["pledges"][i]["left"];
 }
 
 /* INIT FUNDING ELEMENTS */
@@ -147,9 +151,8 @@ radioButtons.forEach((radioButton) => {
 })
 
 
-
-
 const addBorderToSelectedRadioBtn = () => {
+  console.log("add border")
   radioButtons.forEach((btn) => {
     let modalParent = btn.parentElement.parentElement;
     if(btn.checked) {
@@ -162,6 +165,7 @@ const addBorderToSelectedRadioBtn = () => {
 
 
 const showBackProjectSection = (parentElement) => {
+  console.log("showback projects section")
   let childElements = parentElement.children;
   for(let i = 0; i < childElements.length; i++) {
     if (childElements[i].classList.contains('enter-pledge')) {
@@ -191,6 +195,7 @@ bamboForm.addEventListener('submit', (e) => {
   fundingTotalFunded.innerHTML = "$" + newTotalFunded
   pledgeNumberLeft[0].innerHTML = Number(product["pledges"][0]["left"]) -1 ;
   modalNumbersLeft[0].innerHTML = Number(product["pledges"][0]["left"]) -1 ;
+  modalNumbersLeftDesktop[0].innerHTML = Number(product["pledges"][0]["left"]) -1 ;
   fundingTotalBackers.innerHTML = Number(product["noOfBacker"]) + 1;
 
   window.scrollTo(0, 0);
@@ -215,6 +220,7 @@ blackForm.addEventListener('submit', (e) => {
 
   backProjectModal.classList.add("hidden")
   successModal.classList.remove("hidden")
+  overlay.classList.add("hidden")
 })
 
 
@@ -233,4 +239,9 @@ bookmarkDiv.addEventListener('click', () => {
     bookmarkDiv.style.backgroundSize = "56px 56px";
     bookmarkDiv.style.color = "var(--moderate)";
   }
+})
+
+
+successConfirmButton.addEventListener('click', () => {
+  overlay.classList.add("hidden")
 })
